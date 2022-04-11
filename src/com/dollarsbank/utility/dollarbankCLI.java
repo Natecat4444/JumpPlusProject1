@@ -52,7 +52,10 @@ public class dollarbankCLI {
 	}
 	
 	public void createUser() {
-		System.out.println("Create Account");
+		System.out.println("Create Account: ");
+		System.out.println("Enter Username: ");
+		System.out.println("Enter Full Name: ");
+		System.out.println("Enter Password: ");
 	}
 	
 	public void Customer() {
