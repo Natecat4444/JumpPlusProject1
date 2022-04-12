@@ -13,6 +13,14 @@ public class Account {
 	}
 	
 	
+	public Account(int id, double balance, int user_id) {
+		super();
+		this.id = id;
+		this.balance = balance;
+		this.user_id = user_id;
+	}
+
+
 	public int getId() {
 		return id;
 	}
