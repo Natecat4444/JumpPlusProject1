@@ -26,8 +26,17 @@ public class DollarsBankController {
 			statement.setString(2, password);
 			ResultSet rs = statement.executeQuery();
 			rs.next();
-
-			System.out.println(rs.getString(0));
+			
+			customer = new Customer(rs.getString(2), rs.getString(3), rs.getInt(1), rs.getString(4), rs.getString(5), rs.getString(6));
+			
+			query = "SELECT * FROM Account WHERE user_id=?;";
+			
+			
+			statement = database.getConn().prepareStatement(query);
+			statement.setInt(1, customer.getId());
+			
+			ResultSet rs1 = statement.executeQuery();
+			rs.next();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

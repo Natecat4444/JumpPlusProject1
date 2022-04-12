@@ -55,15 +55,15 @@ public class dollarbankCLI {
 	
 	public void createUser() {
 		System.out.println("Create Account");
-		System.out.print("Enter Username: ");
+		System.out.println("Enter Username: ");
 		String username = scanner.next();
-		System.out.print("Enter Full Name: ");
+		System.out.println("Enter Full Name (no spaces): ");
 		String name = scanner.next();
-		System.out.print("Enter Phone Number: ");
+		System.out.println("Enter Phone Number: ");
 		String number = scanner.next();
-		System.out.print("Enter Address: ");
+		System.out.println("Enter Address (no spaces): ");
 		String address = scanner.next();
-		System.out.print("Enter Password: ");
+		System.out.println("Enter Password: ");
 		String password = scanner.next();
 		
 		boolean success = controller.createUser(name, username, password, number, address);
