@@ -3,6 +3,7 @@ package com.dollarsbank.utility;
 import java.util.Scanner;
 
 import com.dollarsbank.controller.DollarsBankController;
+import com.dollarsbank.utility.database;
 
 public class dollarbankCLI {
 	private DollarsBankController controller;
@@ -28,6 +29,7 @@ public class dollarbankCLI {
 			case 2: login();
 				break;
 			case 3: System.out.println("Goodbye");
+				database.closeConn();
 				System.exit(1);
 				break;
 			default: System.out.println("Invalid Selection");
@@ -52,10 +54,24 @@ public class dollarbankCLI {
 	}
 	
 	public void createUser() {
-		System.out.println("Create Account: ");
-		System.out.println("Enter Username: ");
+		System.out.print("Create Account");
+		System.out.print("Enter Username: ");
+		String username = scanner.nextLine();
 		System.out.println("Enter Full Name: ");
-		System.out.println("Enter Password: ");
+		String name = scanner.nextLine();
+		System.out.print("Enter Phone Number: ");
+		String number = scanner.nextLine();
+		System.out.print("Enter Password: ");
+		String password = scanner.nextLine();
+		
+		boolean success = controller.createUser(name, username, password, number);
+		
+		if(success) {
+			System.out.println("User Created");
+			login();
+		} else {
+			System.out.println("Error creating user");
+		}
 	}
 	
 	public void Customer() {
