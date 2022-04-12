@@ -22,6 +22,7 @@ Create Table Transaction(
     acc_id int not null,
     type varchar(10) not null,
     ammount double not null,
+    occured datetime default current_timestamp, 
     foreign key (user_id) references Customer(id),
     foreign key (acc_id) references Account(acc_id)
 )

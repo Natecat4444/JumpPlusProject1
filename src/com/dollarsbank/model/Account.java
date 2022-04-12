@@ -40,6 +40,11 @@ public class Account {
 		this.user_id = user_id;
 	}
 	
+	public boolean updateBalance() {
+		//TODO
+		return false;
+	}
+	
 	
 
 }
