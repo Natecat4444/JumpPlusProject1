@@ -77,7 +77,55 @@ public class dollarbankCLI {
 	}
 	
 	public void Customer() {
-		System.out.println("Welcome "+controller.getCustomerName());
+		boolean signedIn = true;
+		while(signedIn) {
+			System.out.println("Welcome "+controller.getCustomerName());
+			System.out.println("1. Deposit funds");
+			System.out.println("2. Withdraw funds");
+			System.out.println("3. Transfer funds");
+			System.out.println("4. View 5 recent transactions");
+			System.out.println("5. Display customer information");
+			System.out.println("6. Sign out");
+			System.out.print("Enter Selection: ");
+			int selection = scanner.nextInt();
+			
+			switch (selection) {
+			case 1: DepositFunds();
+				break;
+			case 2: WithDrawFunds();
+				break;
+			case 3: TransferFunds();
+				break;
+			case 4: ViewTransactions();
+				break;
+			case 5: DisplayInfo();
+				break;
+			case 6: signedIn=false;
+				System.out.println("Goodbye "+controller.getCustomerName());
+				break;
+			default:
+				break;
+			}
+		}
 	}
 	
+	public void DepositFunds() {
+		//TODO
+	}
+	
+	public void WithDrawFunds() {
+		//TODO
+	}
+	
+	public void TransferFunds() {
+		//TODO
+	}
+	
+	public void ViewTransactions() {
+		//TODO
+	}
+	
+	public void DisplayInfo() {
+		//TODO
+	}
 }

@@ -14,6 +14,18 @@ public class Transaction {
 		this.type = type;
 		this.amount = amount;
 	}
+	
+
+	public Transaction(int id, int user_id, int acc_id, String type, double amount) {
+		super();
+		this.id = id;
+		this.user_id = user_id;
+		this.acc_id = acc_id;
+		this.type = type;
+		this.amount = amount;
+	}
+
+
 
 	public int getUser_id() {
 		return user_id;
