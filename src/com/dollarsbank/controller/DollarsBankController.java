@@ -36,14 +36,15 @@ public class DollarsBankController {
 		return false;
 	}
 	
-	public boolean createUser(String name, String username, String password, String number) {
-		String query = "INSERT INTO Customer(name, username, password, number) values(?,?,?,?);";
+	public boolean createUser(String name, String username, String password, String number, String address) {
+		String query = "INSERT INTO Customer(name, username, password, number, address) values(?,?,?,?,?);";
 		try {
 			PreparedStatement statement = database.getConn().prepareStatement(query);
 			statement.setString(1, name);
 			statement.setString(2, username);
 			statement.setString(3, password);
 			statement.setString(4, number);
+			statement.setString(5, address);
 			
 			int result = statement.executeUpdate();
 			

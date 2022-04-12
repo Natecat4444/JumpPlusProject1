@@ -41,9 +41,9 @@ public class dollarbankCLI {
 	public void login() {
 		System.out.println("Login");
 		System.out.print("Enter Username: ");
-		String username = scanner.nextLine();
+		String username = scanner.next();
 		System.out.print("Enter Password: ");
-		String password = scanner.nextLine();
+		String password = scanner.next();
 		boolean success = controller.login(username, password);
 		if(success) {
 			Customer();
@@ -54,17 +54,19 @@ public class dollarbankCLI {
 	}
 	
 	public void createUser() {
-		System.out.print("Create Account");
+		System.out.println("Create Account");
 		System.out.print("Enter Username: ");
-		String username = scanner.nextLine();
-		System.out.println("Enter Full Name: ");
-		String name = scanner.nextLine();
+		String username = scanner.next();
+		System.out.print("Enter Full Name: ");
+		String name = scanner.next();
 		System.out.print("Enter Phone Number: ");
-		String number = scanner.nextLine();
+		String number = scanner.next();
+		System.out.print("Enter Address: ");
+		String address = scanner.next();
 		System.out.print("Enter Password: ");
-		String password = scanner.nextLine();
+		String password = scanner.next();
 		
-		boolean success = controller.createUser(name, username, password, number);
+		boolean success = controller.createUser(name, username, password, number, address);
 		
 		if(success) {
 			System.out.println("User Created");
