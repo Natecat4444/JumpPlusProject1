@@ -99,8 +99,19 @@ public class DollarsBankController {
 			if(success <1) {
 				return false;
 			}
+			account.setBalance(balance);
+			
 			query = "INSERT INTO Transaction(user_id, acc_id, type, ammount) values(?,?,?,?);";
-			PreparedStatement stmt = database.getConn().prepareStatement(query);
+			stmt = database.getConn().prepareStatement(query);
+			stmt.setInt(1, customer.getId());
+			stmt.setInt(2, account.getId());
+			stmt.setString(3, "WITHDRAWL");
+			stmt.setDouble(4, amount);
+			success = stmt.executeUpdate();
+			if(success <1) {
+				return false;
+			}
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -109,11 +120,41 @@ public class DollarsBankController {
 	}
 	
 	public boolean despositFunds(double amount) {
-		//TODO
+		String query ="UPDATE Account SET balance=? WHERE acc_id=?;";
+		double balance = account.getBalance() + amount;
+		if(balance <0 ) {
+			return false;
+		}
+		try {
+			PreparedStatement stmt = database.getConn().prepareStatement(query);
+			stmt.setDouble(1, balance);
+			stmt.setInt(2, account.getId());
+			int success = stmt.executeUpdate();
+			if(success <1) {
+				return false;
+			}
+			account.setBalance(balance);
+			
+			query = "INSERT INTO Transaction(user_id, acc_id, type, ammount) values(?,?,?,?);";
+			stmt = database.getConn().prepareStatement(query);
+			stmt.setInt(1, customer.getId());
+			stmt.setInt(2, account.getId());
+			stmt.setString(3, "DEPOSIT");
+			stmt.setDouble(4, amount);
+			success = stmt.executeUpdate();
+			if(success <1) {
+				return false;
+			}
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 	
 	public boolean transferFunds(int account_id, double amount) {
+		String query ="UPDATE Account SET balance=? WHERE acc_id=?;";
+		String query1 = "INSERT INTO Transaction(user_id, acc_id, type, ammount) values(?,?,?,?);";
 		//TODO
 		return false;
 	}
