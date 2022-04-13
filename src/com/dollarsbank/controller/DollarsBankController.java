@@ -86,6 +86,24 @@ public class DollarsBankController {
 	}
 	
 	public boolean withdrawFunds(double amount) {
+		String query ="UPDATE Account SET balance=? WHERE acc_id=?;";
+		double balance = account.getBalance() - amount;
+		if(balance <0 ) {
+			return false;
+		}
+		try {
+			PreparedStatement stmt = database.getConn().prepareStatement(query);
+			stmt.setDouble(1, balance);
+			stmt.setInt(2, account.getId());
+			int success = stmt.executeUpdate();
+			if(success <1) {
+				return false;
+			}
+			query = "INSERT INTO Transaction(user_id, acc_id, type, ammount) values(?,?,?,?);";
+			PreparedStatement stmt = database.getConn().prepareStatement(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		//TODO
 		return false;
 	}
