@@ -1,5 +1,6 @@
 package com.dollarsbank.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Transaction {
@@ -8,7 +9,7 @@ public class Transaction {
 	private int acc_id;
 	private String type;
 	private double amount;
-	private LocalDateTime occured;
+	private LocalDate occured;
 	
 	public Transaction(int user_id, int acc_id, String type, double amount) {
 		super();
@@ -19,7 +20,7 @@ public class Transaction {
 	}
 	
 
-	public Transaction(int id, int user_id, int acc_id, String type, double amount, LocalDateTime occured) {
+	public Transaction(int id, int user_id, int acc_id, String type, double amount, LocalDate occured) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -64,12 +65,12 @@ public class Transaction {
 	}
 
 
-	public LocalDateTime getOccured() {
+	public LocalDate getOccured() {
 		return occured;
 	}
 
 
-	public void setOccured(LocalDateTime occured) {
+	public void setOccured(LocalDate occured) {
 		this.occured = occured;
 	}
 

@@ -210,21 +210,22 @@ public class DollarsBankController {
 	}
 	
 	public ArrayList<Transaction> getFiveTransactions(){
-		String query = "Select * from Transaction WHERE acc_id = ? SORT BY occured desc LIMIT 5;";
+		String query = "Select * from Transaction WHERE acc_id = ? ORDER BY occured asc LIMIT 5;";
+		ArrayList<Transaction> transactions = new ArrayList<>();
 		try {
 			PreparedStatement stmt = database.getConn().prepareStatement(query);
 			stmt.setInt(1, account.getId());
 			
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-//				Transaction t = new Transaction();
-				System.out.println("Get these set");
+				Transaction t = new Transaction(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getDate(6).toLocalDate());
+				transactions.add(t);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return transactions;
 	}
 	
 	public String getCustomerName() {
