@@ -59,7 +59,6 @@ public class DollarsBankController {
 			stmt.setInt(1, customer.getId());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -81,10 +80,29 @@ public class DollarsBankController {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public boolean withdrawFunds() {
+		//TODO
+		return false;
+	}
+	
+	public boolean despositFunds() {
+		//TODO
+		return false;
+	}
+	
+	public boolean transferFunds() {
+		//TODO
+		return false;
+	}
+	
+	public String getCustomerInfo() {
+		//TODO
+		return "";
 	}
 	
 	public ArrayList<Transaction> getFiveTransactions(){
