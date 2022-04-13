@@ -202,7 +202,6 @@ public class DollarsBankController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		//TODO
 		return false;
 	}
 	
@@ -211,6 +210,20 @@ public class DollarsBankController {
 	}
 	
 	public ArrayList<Transaction> getFiveTransactions(){
+		String query = "Select * from Transaction WHERE acc_id = ? SORT BY occured desc LIMIT 5;";
+		try {
+			PreparedStatement stmt = database.getConn().prepareStatement(query);
+			stmt.setInt(1, account.getId());
+			
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+//				Transaction t = new Transaction();
+				System.out.println("Get these set");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 	

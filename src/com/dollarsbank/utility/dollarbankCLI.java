@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import com.dollarsbank.controller.DollarsBankController;
 import com.dollarsbank.model.Transaction;
-import com.dollarsbank.utility.database;
 
 public class dollarbankCLI {
 	private DollarsBankController controller;
