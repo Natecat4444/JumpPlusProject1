@@ -1,8 +1,10 @@
 package com.dollarsbank.utility;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.dollarsbank.controller.DollarsBankController;
+import com.dollarsbank.model.Transaction;
 import com.dollarsbank.utility.database;
 
 public class dollarbankCLI {
@@ -110,22 +112,49 @@ public class dollarbankCLI {
 	}
 	
 	public void DepositFunds() {
-		//TODO
+		System.out.print("Enter amount to deposit: ");
+		double amount = scanner.nextDouble();
+		if(controller.despositFunds(amount)) {
+			System.out.println(amount+" deposited");
+		} else {
+			System.out.println("System error, unable to complete deposit");
+		}		
 	}
 	
 	public void WithDrawFunds() {
-		//TODO
+		System.out.println("Enter amount to withdraw");
+		double amount = scanner.nextDouble();
+		if(controller.withdrawFunds(amount)) {
+			System.out.println(amount+" withdrawn");
+		} else {
+			System.out.println("System error, unable to complete withdrawl");
+		}
 	}
 	
 	public void TransferFunds() {
-		//TODO
+		System.out.println("Enter transferee account id: ");
+		int id = scanner.nextInt();
+		System.out.println("Enter amount to transfer: ");
+		double amount = scanner.nextDouble();
+		
+		if(controller.transferFunds(id, amount)) {
+			System.out.println("Transfer completed successfully");
+		} else {
+			System.out.println("Unable to transfer funds, please check account id");
+		}
 	}
 	
 	public void ViewTransactions() {
-		//TODO
+		ArrayList<Transaction> transactions = controller.getFiveTransactions();
+		
+		int size = transactions.size();
+		
+		for(int k = 0; k<size; k++) {
+			System.out.println(transactions.get(k).toString());
+		}
 	}
 	
 	public void DisplayInfo() {
-		//TODO
+		System.out.println(controller.getCustomerInfo());
 	}
 }

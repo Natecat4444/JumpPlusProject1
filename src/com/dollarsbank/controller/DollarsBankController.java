@@ -85,24 +85,27 @@ public class DollarsBankController {
 		return false;
 	}
 	
-	public boolean withdrawFunds() {
+	public boolean withdrawFunds(double amount) {
 		//TODO
 		return false;
 	}
 	
-	public boolean despositFunds() {
+	public boolean despositFunds(double amount) {
 		//TODO
 		return false;
 	}
 	
-	public boolean transferFunds() {
+	public boolean transferFunds(int account_id, double amount) {
 		//TODO
 		return false;
+	}
+	
+	public void createTransaction() {
+		//TODO
 	}
 	
 	public String getCustomerInfo() {
-		//TODO
-		return "";
+		return customer.toString()+" Account num:"+account.getId();
 	}
 	
 	public ArrayList<Transaction> getFiveTransactions(){

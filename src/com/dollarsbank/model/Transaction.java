@@ -1,11 +1,14 @@
 package com.dollarsbank.model;
 
+import java.time.LocalDateTime;
+
 public class Transaction {
 	private int id;
 	private int user_id;
 	private int acc_id;
 	private String type;
 	private double amount;
+	private LocalDateTime occured;
 	
 	public Transaction(int user_id, int acc_id, String type, double amount) {
 		super();
@@ -16,13 +19,14 @@ public class Transaction {
 	}
 	
 
-	public Transaction(int id, int user_id, int acc_id, String type, double amount) {
+	public Transaction(int id, int user_id, int acc_id, String type, double amount, LocalDateTime occured) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
 		this.acc_id = acc_id;
 		this.type = type;
 		this.amount = amount;
+		this.occured = occured;
 	}
 
 
@@ -57,6 +61,23 @@ public class Transaction {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+
+	public LocalDateTime getOccured() {
+		return occured;
+	}
+
+
+	public void setOccured(LocalDateTime occured) {
+		this.occured = occured;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", user_id=" + user_id + ", acc_id=" + acc_id + ", type=" + type + ", amount="
+				+ amount + ", occured=" + occured + "]";
 	}
 	
 	
