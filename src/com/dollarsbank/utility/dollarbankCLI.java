@@ -131,9 +131,9 @@ public class dollarbankCLI {
 	}
 	
 	public void TransferFunds() {
-		System.out.println("Enter transferee account id: ");
+		System.out.print("Enter transferee account id: ");
 		int id = scanner.nextInt();
-		System.out.println("Enter amount to transfer: ");
+		System.out.print("Enter amount to transfer: ");
 		double amount = scanner.nextDouble();
 		
 		if(controller.transferFunds(id, amount)) {

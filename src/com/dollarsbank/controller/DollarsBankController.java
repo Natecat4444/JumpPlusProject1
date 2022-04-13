@@ -187,7 +187,7 @@ public class DollarsBankController {
 			giveFundsTrans.setInt(1, customer.getId());
 			giveFundsTrans.setInt(2, account_id);
 			giveFundsTrans.setString(3, "TRANSFER");
-			giveFundsTrans.setDouble(4, bal);
+			giveFundsTrans.setDouble(4, amount);
 			
 			int success = takeFunds.executeUpdate();
 			if(success == 0) {
