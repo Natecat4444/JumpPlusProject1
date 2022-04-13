@@ -121,7 +121,7 @@ public class dollarbankCLI {
 	}
 	
 	public void WithDrawFunds() {
-		System.out.println("Enter amount to withdraw");
+		System.out.print("Enter amount to withdraw: ");
 		double amount = scanner.nextDouble();
 		if(controller.withdrawFunds(amount)) {
 			System.out.println(amount+" withdrawn");
