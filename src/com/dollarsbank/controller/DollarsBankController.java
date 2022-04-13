@@ -155,12 +155,55 @@ public class DollarsBankController {
 	public boolean transferFunds(int account_id, double amount) {
 		String query ="UPDATE Account SET balance=? WHERE acc_id=?;";
 		String query1 = "INSERT INTO Transaction(user_id, acc_id, type, ammount) values(?,?,?,?);";
+		String query3 = "SELECT balance FROM Account WHERE acc_id=?;";
+		try {
+			PreparedStatement takeFunds = database.getConn().prepareStatement(query);
+			PreparedStatement giveFunds = database.getConn().prepareStatement(query);
+			PreparedStatement takeFundsTrans = database.getConn().prepareStatement(query1);
+			PreparedStatement giveFundsTrans = database.getConn().prepareStatement(query1);
+			PreparedStatement getSecondAccount = database.getConn().prepareStatement(query3);
+			
+			getSecondAccount.setInt(1, account_id);
+			
+			ResultSet rs = getSecondAccount.executeQuery();
+			
+			if(!rs.next()) {
+				return false;
+			}
+			
+			double bal = rs.getDouble(1);
+			
+			takeFunds.setDouble(1, account.getBalance()-amount);
+			takeFunds.setInt(2, account.getId());
+			
+			giveFunds.setDouble(1, bal+amount); //Need to update this value to reflect what was in there
+			giveFunds.setInt(2, account_id);
+			
+			takeFundsTrans.setInt(1, customer.getId());
+			takeFundsTrans.setInt(2, account.getId());
+			takeFundsTrans.setString(3, "TRANSFER");
+			takeFundsTrans.setDouble(4, amount*-1);
+			
+			giveFundsTrans.setInt(1, customer.getId());
+			giveFundsTrans.setInt(2, account_id);
+			giveFundsTrans.setString(3, "TRANSFER");
+			giveFundsTrans.setDouble(4, bal);
+			
+			int success = takeFunds.executeUpdate();
+			if(success == 0) {
+				return false;
+			}
+			
+			giveFunds.executeUpdate();
+			giveFundsTrans.executeUpdate();
+			takeFundsTrans.executeUpdate();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		//TODO
 		return false;
-	}
-	
-	public void createTransaction() {
-		//TODO
 	}
 	
 	public String getCustomerInfo() {
